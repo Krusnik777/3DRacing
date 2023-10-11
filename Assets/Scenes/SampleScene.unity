@@ -547,6 +547,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1249569264}
   - component: {fileID: 1249569263}
+  - component: {fileID: 1249569265}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -567,6 +568,64 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_car: {fileID: 2072814148}
+  m_brakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.002212348
+      value: 0.599525
+      inSlope: -0.032009184
+      outSlope: -0.032009184
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09531377
+    - serializedVersion: 3
+      time: 0.60120654
+      value: 0.48987603
+      inSlope: -0.702471
+      outSlope: -0.702471
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0032998
+      value: -0.0019762847
+      inSlope: -1.2630929
+      outSlope: -1.2630929
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.1364293
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_steerCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.097772524
+      outSlope: 0.097772524
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.06063947
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2.3128903
+      outSlope: -2.3128903
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.034178615
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_autoBrakeStrength: 0.05
 --- !u!4 &1249569264
 Transform:
   m_ObjectHideFlags: 0
@@ -581,6 +640,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1249569265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249569262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8c054668b5f174aacd3fcecd0f3e90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1449308064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1118,7 +1189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc01327d4facfc4cbd505d3f3da86ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxSteerAngle: 15
+  m_maxSteerAngle: 25
   m_maxBrakeTorque: 50000
   m_engineTorqueCurve:
     serializedVersion: 2
@@ -1196,10 +1267,10 @@ MonoBehaviour:
     m_isSteer: 1
     m_wheelWidth: 1.43192
     m_antiRollForce: 70000
-    m_additionalWheelDownForce: 100
+    m_additionalWheelDownForce: 150
     m_baseForwardStiffness: 1.5
-    m_stabilityForwardFactor: 1
-    m_baseSidewaysStiffness: 1.5
+    m_stabilityForwardFactor: 1.5
+    m_baseSidewaysStiffness: 1.75
     m_stabilitySidewaysFactor: 1
   - m_leftWheelCollider: {fileID: 1579999368}
     m_rightWheelCollider: {fileID: 1605547078}
@@ -1209,10 +1280,10 @@ MonoBehaviour:
     m_isSteer: 0
     m_wheelWidth: 1.43192
     m_antiRollForce: 70000
-    m_additionalWheelDownForce: 100
+    m_additionalWheelDownForce: 150
     m_baseForwardStiffness: 1.5
-    m_stabilityForwardFactor: 1
-    m_baseSidewaysStiffness: 1.5
+    m_stabilityForwardFactor: 1.5
+    m_baseSidewaysStiffness: 1.75
     m_stabilitySidewaysFactor: 1
   m_wheelBaseLength: 3.10568
   m_centerOfMass: {fileID: 176609358}

@@ -28,7 +28,38 @@ namespace Racing
 
         public float LinearVelocity => rigidBody.velocity.magnitude * 3.6f;
 
-        private new Rigidbody rigidBody;
+        private Rigidbody rigidBody;
+
+        private bool isHandBraked;
+
+        #region Public
+
+        public float GetAverageRpm()
+        {
+            float sum = 0;
+
+            for (int i =0; i < m_wheelAxles.Length; i++)
+            {
+                sum += m_wheelAxles[i].GetAverageRpm();
+            }
+
+            return sum / m_wheelAxles.Length;
+        }
+
+        public float GetWheelSpeed()
+        {
+            return GetAverageRpm() * m_wheelAxles[0].GetRadius() * 2 * 0.1885f;
+        }
+
+        public void ApplyHandBrake(float maxBrakeTorque, bool isActive)
+        {
+            isHandBraked = isActive;
+            if (isHandBraked) m_wheelAxles[1].ApplyBrakeTorque(maxBrakeTorque);
+        }
+
+        #endregion
+
+        #region Private
 
         private void Start()
         {
@@ -74,9 +105,10 @@ namespace Racing
 
                 m_wheelAxles[i].ApplyMotorTorque(MotorTorque / amountMotorWheel);
                 m_wheelAxles[i].ApplySteerAngle(SteerAngle, m_wheelBaseLength);
-                m_wheelAxles[i].ApplyBrakeTorque(BrakeTorque);
-
+                if (!(isHandBraked && i == 1)) m_wheelAxles[i].ApplyBrakeTorque(BrakeTorque);
             }
         }
+
+        #endregion
     }
 }

@@ -83,6 +83,16 @@ namespace Racing
             m_rightWheelCollider.brakeTorque = brakeTorque;
         }
 
+        public float GetAverageRpm()
+        {
+            return (m_leftWheelCollider.rpm + m_rightWheelCollider.rpm) * 0.5f;
+        }
+
+        public float GetRadius()
+        {
+            return m_leftWheelCollider.radius;
+        }
+
         #endregion
 
         #region Private

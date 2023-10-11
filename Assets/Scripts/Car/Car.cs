@@ -13,6 +13,10 @@ namespace Racing
         [SerializeField] private int m_maxSpeed;
 
         public float LinearVelocity => m_chassis.LinearVelocity;
+        public float WheelSpeed => m_chassis.GetWheelSpeed();
+        public float MaxSpeed => m_maxSpeed;
+
+        public void ApplyHandBrake(bool isActive) => m_chassis.ApplyHandBrake(m_maxBrakeTorque, isActive);
 
         private CarChassis m_chassis;
 
