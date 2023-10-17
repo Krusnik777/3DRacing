@@ -45,6 +45,12 @@ namespace Racing
             SyncMeshTransform();
         }
 
+        public void ConfigureVehicleSubsteps(float speedThreshold, int speedBelowThreshold, int stepAboveThreshold)
+        {
+            m_leftWheelCollider.ConfigureVehicleSubsteps(speedThreshold, speedBelowThreshold, stepAboveThreshold);
+            m_rightWheelCollider.ConfigureVehicleSubsteps(speedThreshold, speedBelowThreshold, stepAboveThreshold);
+        }
+
         public void ApplySteerAngle(float steerAngle, float wheelBaseLength)
         {
             if (!m_isSteer) return;

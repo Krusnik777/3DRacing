@@ -26,6 +26,12 @@ namespace Racing
             UpdateHandBrake();
 
             UpdateAutoBrake();
+
+            //DEBUG
+            if (Input.GetKeyDown(KeyCode.E))
+                m_car.UpGear();
+            if (Input.GetKeyDown(KeyCode.Q))
+                m_car.DownGear();
         }
 
         private void UpdateAxis()
@@ -39,7 +45,7 @@ namespace Racing
         {
             if (Mathf.Sign(verticalAxis) == Mathf.Sign(wheelSpeed) || Mathf.Abs(wheelSpeed) < 0.5f)
             {
-                m_car.ThrottleControl = verticalAxis;
+                m_car.ThrottleControl = Mathf.Abs(verticalAxis);
                 m_car.BrakeControl = 0;
             }
             else
@@ -47,6 +53,12 @@ namespace Racing
                 m_car.ThrottleControl = 0;
                 m_car.BrakeControl = m_brakeCurve.Evaluate(wheelSpeed / m_car.MaxSpeed);
             }
+
+            if (verticalAxis < 0 && wheelSpeed > -0.5f && wheelSpeed <= 0.5f)
+                m_car.ShiftToReverseGear();
+
+            if (verticalAxis > 0 && wheelSpeed > -0.5f && wheelSpeed < 0.5f)
+                m_car.ShiftToFirstGear();
         }
 
         private void UpdateSteer()
