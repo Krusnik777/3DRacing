@@ -4172,7 +4172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_car: {fileID: 2072814148}
-  m_normalizedSpeedShake: 0.7
+  m_normalizedSpeedShake: 0.8
   m_shakeAmount: 2
 --- !u!114 &963194232
 MonoBehaviour:
@@ -4265,7 +4265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_car: {fileID: 2072814148}
   m_minMotionBlurShutterAngle: 0
-  m_maxMotionBlurShutterAngle: 150
+  m_maxMotionBlurShutterAngle: 50
   m_minVignetteValue: 0
   m_maxVignetteValue: 0.6
 --- !u!1 &987850245
