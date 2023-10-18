@@ -35,9 +35,9 @@ namespace Racing
         public event Action<string> EventOnGearChanged;
 
         public float LinearVelocity => m_chassis.LinearVelocity;
+        public float NormalizedLinearVelocity => m_chassis.LinearVelocity / m_maxSpeed;
         public float WheelSpeed => m_chassis.GetWheelSpeed();
         public float MaxSpeed => m_maxSpeed;
-
         public float EngineRpm => m_engineRpm;
         public float EngineMaxRpm => m_engineMaxRpm;
 
@@ -115,6 +115,8 @@ namespace Racing
 
         private void ShiftGear(int gearIndex)
         {
+            if (gearIndex >= m_gears.Length) return;
+
             gearIndex = Mathf.Clamp(gearIndex, 0, m_gears.Length - 1);
             m_selectedGear = m_gears[gearIndex];
             m_selectedGearIndex = gearIndex;
@@ -124,6 +126,12 @@ namespace Racing
         private void AutoGearShift()
         {
             if (m_selectedGear < 0) return;
+
+            if (m_linearVelocity < 10)
+            {
+                if (m_selectedGear != 0) ShiftNeutral();
+                return;
+            }
 
             if (m_engineRpm >= m_upShiftEngineRpm)
                 UpGear();
