@@ -4,9 +4,8 @@ using UnityEngine.Rendering.PostProcessing;
 namespace Racing
 {
     [RequireComponent(typeof(PostProcessVolume), typeof(PostProcessLayer))]
-    public class CameraPostProcessingController : MonoBehaviour
+    public class CarCameraPostProcessingCorrector : CarCameraComponent
     {
-        [SerializeField] private Car m_car;
         [SerializeField] private float m_minMotionBlurShutterAngle = 0.0f;
         [SerializeField] private float m_maxMotionBlurShutterAngle = 200.0f;
         [SerializeField] private float m_minVignetteValue = 0.0f;

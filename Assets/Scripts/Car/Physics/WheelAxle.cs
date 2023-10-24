@@ -123,10 +123,10 @@ namespace Racing
             float forceDir = (travelL - travelR);
 
             if (m_leftWheelCollider.isGrounded)
-                m_leftWheelCollider.attachedRigidbody.AddForceAtPosition(m_leftWheelCollider.transform.up * (-forceDir * m_antiRollForce), m_leftWheelCollider.transform.position);
+                m_leftWheelCollider.attachedRigidbody.AddForceAtPosition(m_leftWheelCollider.transform.up * -forceDir * m_antiRollForce, m_leftWheelCollider.transform.position);
 
             if (m_rightWheelCollider.isGrounded)
-                m_rightWheelCollider.attachedRigidbody.AddForceAtPosition(m_rightWheelCollider.transform.up * (forceDir * m_antiRollForce), m_rightWheelCollider.transform.position);
+                m_rightWheelCollider.attachedRigidbody.AddForceAtPosition(m_rightWheelCollider.transform.up * forceDir * m_antiRollForce, m_rightWheelCollider.transform.position);
 
         }
 

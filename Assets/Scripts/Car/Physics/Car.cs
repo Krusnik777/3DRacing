@@ -44,6 +44,7 @@ namespace Racing
         public void ApplyHandBrake(bool isActive) => m_chassis.ApplyHandBrake(m_maxBrakeTorque, isActive);
 
         private CarChassis m_chassis;
+        public Rigidbody Rigidbody => m_chassis == null ? GetComponent<CarChassis>().Rigidbody : m_chassis.Rigidbody;
 
         // DEBUG
         [SerializeField] private float m_linearVelocity;

@@ -2,18 +2,37 @@ using UnityEngine;
 
 namespace Racing
 {
-    public class CarInputControl : MonoBehaviour
+    public class CarInputControl : MonoBehaviour, IDependency<Car>
     {
-        [SerializeField] private Car m_car;
         [SerializeField] private AnimationCurve m_brakeCurve;
         [SerializeField] private AnimationCurve m_steerCurve;
 
         [SerializeField] [Range(0.0f, 1.0f)] private float m_autoBrakeStrength = 0.1f;
 
+        private Car m_car;
+        public void Construct(Car car) => m_car = car;
+
         private float wheelSpeed;
         private float verticalAxis;
         private float horizontalAxis;
         private float handBrakeAxis;
+
+        #region Public
+
+        public void Stop()
+        {
+            verticalAxis = 0;
+            horizontalAxis = 0;
+            handBrakeAxis = 0;
+
+            m_car.ThrottleControl = 0;
+            m_car.SteerControl = 0;
+            m_car.BrakeControl = 1;
+        }
+
+        #endregion
+
+        #region Private
 
         private void Update()
         {
@@ -78,5 +97,8 @@ namespace Racing
                 m_car.BrakeControl = m_brakeCurve.Evaluate(wheelSpeed / m_car.MaxSpeed) * m_autoBrakeStrength;
             }
         }
+
+        #endregion
+
     }
 }

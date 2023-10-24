@@ -26,9 +26,10 @@ namespace Racing
         public float BrakeTorque;
         public float SteerAngle;
 
-        public float LinearVelocity => rigidBody.velocity.magnitude * 3.6f;
+        public float LinearVelocity => rigidbody.velocity.magnitude * 3.6f;
 
-        private Rigidbody rigidBody;
+        private new Rigidbody rigidbody;
+        public Rigidbody Rigidbody => rigidbody == null ? GetComponent<Rigidbody>() : rigidbody;
 
         private bool isHandBraked;
 
@@ -38,7 +39,7 @@ namespace Racing
         {
             float sum = 0;
 
-            for (int i =0; i < m_wheelAxles.Length; i++)
+            for (int i = 0; i < m_wheelAxles.Length; i++)
             {
                 sum += m_wheelAxles[i].GetAverageRpm();
             }
@@ -63,10 +64,10 @@ namespace Racing
 
         private void Start()
         {
-            rigidBody = GetComponent<Rigidbody>();
+            rigidbody = GetComponent<Rigidbody>();
 
             if (m_centerOfMass != null)
-                rigidBody.centerOfMass = m_centerOfMass.localPosition;
+                rigidbody.centerOfMass = m_centerOfMass.localPosition;
 
             for (int i = 0; i < m_wheelAxles.Length;i++)
             {
@@ -85,13 +86,13 @@ namespace Racing
 
         private void UpdateAngularDrag()
         {
-            rigidBody.angularDrag = Mathf.Clamp(m_angularDragFactor * LinearVelocity, m_angularDragMin, m_angularDragMax);
+            rigidbody.angularDrag = Mathf.Clamp(m_angularDragFactor * LinearVelocity, m_angularDragMin, m_angularDragMax);
         }
 
         private void UpdateDownForce()
         {
             float downForce = Mathf.Clamp(m_downForceFactor * LinearVelocity, m_downForceMin, m_downForceMax);
-            rigidBody.AddForce(-transform.up * downForce);
+            rigidbody.AddForce(-transform.up * downForce);
         }
 
         private void UpdateWheelAxles()
