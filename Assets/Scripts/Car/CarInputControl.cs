@@ -19,7 +19,7 @@ namespace Racing
 
         #region Public
 
-        public void Stop()
+        public void Reset()
         {
             verticalAxis = 0;
             horizontalAxis = 0;
@@ -27,6 +27,13 @@ namespace Racing
 
             m_car.ThrottleControl = 0;
             m_car.SteerControl = 0;
+            m_car.BrakeControl = 0;
+        }
+
+        public void Stop()
+        {
+            Reset();
+
             m_car.BrakeControl = 1;
         }
 
@@ -99,6 +106,5 @@ namespace Racing
         }
 
         #endregion
-
     }
 }

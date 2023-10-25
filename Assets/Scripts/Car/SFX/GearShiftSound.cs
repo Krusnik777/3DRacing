@@ -16,9 +16,14 @@ namespace Racing
             car.EventOnGearChanged += OnGearChanged;
         }
 
-        private void OnGearChanged(string obj)
+        private void OnDestroy()
         {
-            audioSource.Play();
+            car.EventOnGearChanged -= OnGearChanged;
+        }
+
+        private void OnGearChanged(string gearName)
+        {
+            if (gearName !="N") audioSource.Play();
         }
     }
 }

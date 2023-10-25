@@ -90,6 +90,27 @@ namespace Racing
             return (m_selectedGearIndex + 1).ToString();
         }
 
+        public void Reset()
+        {
+            m_chassis.Reset();
+
+            m_chassis.MotorTorque = 0;
+            m_chassis.BrakeTorque = 0;
+            m_chassis.SteerAngle = 0;
+
+            ThrottleControl = 0;
+            BrakeControl = 0;
+            SteerControl = 0;
+        }
+
+        public void Respawn(Vector3 position, Quaternion rotation)
+        {
+            Reset();
+
+            transform.position = position;
+            transform.rotation = rotation;
+        }
+
         #endregion
 
         #region Private

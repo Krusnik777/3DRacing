@@ -8,7 +8,7 @@ namespace Racing
 
         private void Start()
         {
-            m_hint.SetActive(false);
+            m_hint.SetActive(isTarget);
         }
 
         protected override void OnPassed()

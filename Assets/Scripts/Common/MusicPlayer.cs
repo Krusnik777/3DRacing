@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Racing
 {
     public class MusicPlayer : SingletonBase<MusicPlayer>
     {
         [SerializeField] private AudioClip[] m_audioClips;
+        [SerializeField] private bool m_playInRandomOrder;
 
         private AudioSource m_audioSource;
 
@@ -13,6 +15,9 @@ namespace Racing
         private void Start()
         {
             m_audioSource = GetComponent<AudioSource>();
+
+            audioNumber = Random.Range(0, m_audioClips.Length);
+
             m_audioSource.PlayOneShot(m_audioClips[audioNumber]);
         }
 
@@ -20,14 +25,19 @@ namespace Racing
         {
             if (m_audioSource.isPlaying == false)
             {
-                m_audioSource.PlayOneShot(ChoosedAudio());
+                m_audioSource.PlayOneShot(ChoosedAudio(m_playInRandomOrder));
             }
         }
 
-        private AudioClip ChoosedAudio()
+        private AudioClip ChoosedAudio(bool inRandomOrder)
         {
-            audioNumber++;
-            if (audioNumber >= m_audioClips.Length) audioNumber = 0;
+            if (inRandomOrder) 
+                audioNumber = Random.Range(0, m_audioClips.Length);
+            else
+            {
+                audioNumber++;
+                if (audioNumber >= m_audioClips.Length) audioNumber = 0;
+            }
             return m_audioClips[audioNumber];
         }
     }

@@ -58,6 +58,12 @@ namespace Racing
             if (isHandBraked) m_wheelAxles[1].ApplyBrakeTorque(maxBrakeTorque);
         }
 
+        public void Reset()
+        {
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.angularVelocity = Vector3.zero;
+        }
+
         #endregion
 
         #region Private
