@@ -13,11 +13,11 @@ public abstract class SingletonBase<T> : MonoBehaviour where T : MonoBehaviour
         if (Instance != null)
         {
             //Debug.LogWarning("MonoSingleton: object of type already exists, instance will be destroyed = " + typeof(T).Name);
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
         Instance = this as T;
 
-        if (m_doNotDestroyOnLoad) DontDestroyOnLoad(this);
+        if (m_doNotDestroyOnLoad) DontDestroyOnLoad(gameObject);
     }
 }

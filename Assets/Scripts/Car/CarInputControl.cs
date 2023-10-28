@@ -54,9 +54,9 @@ namespace Racing
             UpdateAutoBrake();
 
             //DEBUG
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("ShiftGearUp"))
                 m_car.UpGear();
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetButtonDown("ShiftGearDown"))
                 m_car.DownGear();
         }
 
@@ -64,7 +64,7 @@ namespace Racing
         {
             verticalAxis = Input.GetAxis("Vertical");
             horizontalAxis = Input.GetAxis("Horizontal");
-            handBrakeAxis = Input.GetAxis("Jump");
+            handBrakeAxis = Input.GetAxis("HandBrake");
         }
 
         private void UpdateThrottleAndBrake()

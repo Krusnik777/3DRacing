@@ -41,7 +41,7 @@ namespace Racing
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetButtonDown("Respawn"))
             {
                 Respawn();
             }

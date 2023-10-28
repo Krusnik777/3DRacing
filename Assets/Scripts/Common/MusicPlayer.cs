@@ -1,14 +1,21 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
 
 namespace Racing
 {
     public class MusicPlayer : SingletonBase<MusicPlayer>
     {
-        [SerializeField] private AudioClip[] m_audioClips;
+        [SerializeField] private MusicInfo m_raceTracks;
         [SerializeField] private bool m_playInRandomOrder;
 
+        public event UnityAction<MusicInfo,int> EventOnMusicTrackChange;
+
         private AudioSource m_audioSource;
+
+        private AudioClip[] clips;
+        private List<int> playedClips;
 
         private int audioNumber = 0;
 
@@ -16,29 +23,45 @@ namespace Racing
         {
             m_audioSource = GetComponent<AudioSource>();
 
-            audioNumber = Random.Range(0, m_audioClips.Length);
-
-            m_audioSource.PlayOneShot(m_audioClips[audioNumber]);
+            clips = m_raceTracks.GetClips();
+            playedClips = new List<int>();
+            Play(true);
         }
 
         private void Update()
         {
             if (m_audioSource.isPlaying == false)
             {
-                m_audioSource.PlayOneShot(ChoosedAudio(m_playInRandomOrder));
+                Play(m_playInRandomOrder);
             }
         }
 
-        private AudioClip ChoosedAudio(bool inRandomOrder)
+        private void Play(bool inRandomOrder)
         {
-            if (inRandomOrder) 
-                audioNumber = Random.Range(0, m_audioClips.Length);
+            if (inRandomOrder)
+            {
+                do
+                {
+                    audioNumber = Random.Range(0, clips.Length);
+                }
+                while (playedClips.Contains(audioNumber));
+
+                playedClips.Add(audioNumber);
+
+                if (playedClips.Count >= clips.Length)
+                {
+                    playedClips.Clear();
+                    playedClips.Add(audioNumber);
+                }
+            }
             else
             {
                 audioNumber++;
-                if (audioNumber >= m_audioClips.Length) audioNumber = 0;
+                if (audioNumber >= clips.Length) audioNumber = 0;
             }
-            return m_audioClips[audioNumber];
+
+            m_audioSource.PlayOneShot(clips[audioNumber]);
+            EventOnMusicTrackChange?.Invoke(m_raceTracks, audioNumber);
         }
     }
 }

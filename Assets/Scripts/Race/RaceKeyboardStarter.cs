@@ -9,7 +9,7 @@ namespace Racing
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Return) == true)
+            if (Input.GetButton("Submit") == true)
             {
                 m_raceStateTracker.LaunchPreparationStart();
             }
