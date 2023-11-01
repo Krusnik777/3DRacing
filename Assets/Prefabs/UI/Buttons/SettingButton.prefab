@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 7116323956397235701}
   - component: {fileID: 7116323956397235702}
   - component: {fileID: 7116323956397235703}
+  - component: {fileID: 2634553719980372703}
   m_Layer: 5
   m_Name: NextButton
   m_TagString: Untagged
@@ -261,6 +262,34 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &2634553719980372703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7116323956397235697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb4454e8388bd441b9e80e3e8200a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_interactible: 1
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5424279777219195594}
+        m_TargetAssemblyTypeName: Racing.UISettingButton, Assembly-CSharp
+        m_MethodName: SetNextValueSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7116323956811879445
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +301,7 @@ GameObject:
   - component: {fileID: 7116323956811879444}
   - component: {fileID: 7116323956811879450}
   - component: {fileID: 8596871916740780556}
-  - component: {fileID: 2819131409390078753}
+  - component: {fileID: 5424279777219195594}
   m_Layer: 5
   m_Name: SettingButton
   m_TagString: Untagged
@@ -331,7 +360,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &2819131409390078753
+--- !u!114 &5424279777219195594
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -340,7 +369,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7116323956811879445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11acd7eb1d775ac4b83afbeb36376d45, type: 3}
+  m_Script: {fileID: 11500000, guid: ae325e7373eb5ad4bba26e4c15dbc858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_interactible: 1
@@ -354,6 +383,11 @@ MonoBehaviour:
   OnUnselect:
     m_PersistentCalls:
       m_Calls: []
+  m_setting: {fileID: 0}
+  m_titleText: {fileID: 7116323957168749735}
+  m_valueText: {fileID: 7116323955741175772}
+  m_previousImage: {fileID: 7116323957021012260}
+  m_nextImage: {fileID: 7116323956397235702}
 --- !u!1 &7116323957021012263
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +400,7 @@ GameObject:
   - component: {fileID: 7116323957021012267}
   - component: {fileID: 7116323957021012260}
   - component: {fileID: 7116323957021012261}
+  - component: {fileID: 1522448909631733960}
   m_Layer: 5
   m_Name: PreviousButton
   m_TagString: Untagged
@@ -445,6 +480,34 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &1522448909631733960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7116323957021012263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb4454e8388bd441b9e80e3e8200a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_interactible: 1
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5424279777219195594}
+        m_TargetAssemblyTypeName: Racing.UISettingButton, Assembly-CSharp
+        m_MethodName: SetPreviousValueSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7116323957168749730
 GameObject:
   m_ObjectHideFlags: 0

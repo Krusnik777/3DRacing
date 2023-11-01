@@ -25,6 +25,8 @@ namespace Racing
 
         private void OnMusicTrackChange(MusicInfo musicTracks, int index)
         {
+            if (m_musicPlayer.InMenu) return;
+
             m_titleText.text = musicTracks.Tracks[index].Title;
             m_performerText.text = musicTracks.Tracks[index].Artist;
             m_animator.SetTrigger("AppearTrigger");

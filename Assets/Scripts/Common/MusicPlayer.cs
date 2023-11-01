@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using UnityEngine.SceneManagement;
 
 namespace Racing
 {
     public class MusicPlayer : SingletonBase<MusicPlayer>
     {
+        private const string MainMenuSceneName = "MainMenu";
+
+        [SerializeField] private MusicInfo m_menuTracks;
         [SerializeField] private MusicInfo m_raceTracks;
         [SerializeField] private bool m_playInRandomOrder;
 
@@ -19,13 +22,24 @@ namespace Racing
 
         private int audioNumber = 0;
 
+        public bool InMenu => activeSceneName == MainMenuSceneName;
+
+        private string activeSceneName => SceneManager.GetActiveScene().name;
+        private string prevActiveSceneName = "";
+
         private void Start()
         {
             m_audioSource = GetComponent<AudioSource>();
-
-            clips = m_raceTracks.GetClips();
             playedClips = new List<int>();
-            Play(true);
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
+            PlayBasedOnScene(SceneManager.GetActiveScene());
+        }
+
+        private void OnDestroy()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         private void Update()
@@ -62,6 +76,31 @@ namespace Racing
 
             m_audioSource.PlayOneShot(clips[audioNumber]);
             EventOnMusicTrackChange?.Invoke(m_raceTracks, audioNumber);
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+        {
+            if (scene.name == prevActiveSceneName) return;
+
+            m_audioSource.Stop();
+            playedClips.Clear();
+            PlayBasedOnScene(scene);
+        }
+
+        private void PlayBasedOnScene(Scene scene)
+        {
+            prevActiveSceneName = scene.name;
+
+            if (scene.name == MainMenuSceneName)
+            {
+                clips = m_menuTracks.GetClips();
+                Play(true);
+            }
+            else
+            {
+                clips = m_raceTracks.GetClips();
+                Play(true);
+            }
         }
     }
 }

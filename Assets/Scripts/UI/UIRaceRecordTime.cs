@@ -9,13 +9,6 @@ namespace Racing
         [SerializeField] private GameObject m_playerRecordObject;
         [SerializeField] private Text m_goldRecordTimeText;
         [SerializeField] private Text m_playerRecordTimeText;
-        [Header("Results")]
-        [SerializeField] private GameObject m_resultsObject;
-        [SerializeField] private GameObject m_recordTimeObject;
-        [SerializeField] private GameObject m_newRecordObject;
-        [SerializeField] private Text m_playerCurrentTimeText;
-        [SerializeField] private Text m_standardTimeText;
-        [SerializeField] private Text m_recordTimeText;
 
         private RaceStateTracker m_raceStateTracker;
         public void Construct(RaceStateTracker raceStateTracker) => m_raceStateTracker = raceStateTracker;
@@ -28,20 +21,14 @@ namespace Racing
             m_raceStateTracker.EventOnStarted += OnRaceStarted;
             m_raceStateTracker.EventOnCompleted += OnRaceCompleted;
 
-            m_raceResultTime.EventOnUpdatedResults += OnUpdatedResults;
-
             m_goldRecordObject.SetActive(false);
             m_playerRecordObject.SetActive(false);
-
-            m_resultsObject.SetActive(false);
         }
 
         private void OnDestroy()
         {
             m_raceStateTracker.EventOnStarted -= OnRaceStarted;
             m_raceStateTracker.EventOnCompleted -= OnRaceCompleted;
-
-            m_raceResultTime.EventOnUpdatedResults -= OnUpdatedResults;
         }
 
         private void OnRaceStarted()
@@ -64,39 +51,5 @@ namespace Racing
             m_goldRecordObject.SetActive(false);
             m_playerRecordObject.SetActive(false);
         }
-
-        private void OnUpdatedResults()
-        {
-            m_resultsObject.SetActive(true);
-
-            m_playerCurrentTimeText.text = StringTime.SecondToTimeString(m_raceResultTime.CurrentTime);
-            m_standardTimeText.text = StringTime.SecondToTimeString(m_raceResultTime.GoldTime);
-
-            if (!m_raceResultTime.RecordWasSet)
-            {
-                m_newRecordObject.SetActive(false);
-                m_recordTimeObject.SetActive(false);
-            }
-            else
-            {
-                if (m_raceResultTime.CurrentTime <= m_raceResultTime.PlayerRecordTime)
-                {
-                    SetRecordObjectsByResult(true);
-                }
-                else
-                {
-                    SetRecordObjectsByResult(false);
-                }
-            }
-        }
-
-        private void SetRecordObjectsByResult(bool newRecordWasSet)
-        {
-            m_newRecordObject.SetActive(newRecordWasSet);
-            m_recordTimeObject.SetActive(!newRecordWasSet);
-
-            if (!newRecordWasSet) m_recordTimeText.text = StringTime.SecondToTimeString(m_raceResultTime.PlayerRecordTime);
-        }
-
     }
 }

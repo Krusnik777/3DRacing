@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3974dba5a906f2246a7f04bd0cde5442, type: 3}
+  m_Name: MusicVolume
+  m_EditorClassIdentifier: 
+  m_title: Music Volume
+  m_audioMixer: {fileID: 24100000, guid: 04a9774d3ccc1294199e38e717fda4ca, type: 2}
+  m_nameParameter: Music Volume
+  m_minRealValue: -80
+  m_maxRealValue: 0
+  m_virtualStep: 10
+  m_minVirtualValue: 0
+  m_maxVirtualValue: 100
