@@ -10,6 +10,7 @@ namespace Racing
         [SerializeField] private RaceInfo m_raceInfo;
         [SerializeField] private Image m_icon;
         [SerializeField] private Text m_title;
+        [SerializeField] private Text m_laps;
 
         public void ApplyProperty(ScriptableObject property)
         {
@@ -19,6 +20,7 @@ namespace Racing
 
             m_icon.sprite = m_raceInfo.Icon;
             m_title.text = m_raceInfo.Title;
+            m_laps.text = m_raceInfo.Laps <= 0 ? "Sprint" : "Laps: " + m_raceInfo.Laps.ToString();
         }
 
         public override void OnPointerClick(PointerEventData eventData)

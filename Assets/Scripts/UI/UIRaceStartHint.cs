@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace Racing
 {
+    [RequireComponent(typeof(Animator))]
     public class UIRaceStartHint : MonoBehaviour, IDependency<RaceStateTracker>
     {
         private RaceStateTracker m_raceStateTracker;
