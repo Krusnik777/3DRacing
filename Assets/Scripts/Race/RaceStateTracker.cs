@@ -29,6 +29,10 @@ namespace Racing
         private RaceState state;
         public RaceState State => state;
 
+        public int LapsToComplete => m_lapsToComplete;
+        public TrackType RaceType => m_trackpointCircuit.Type;
+        public int TrackPointsAmount => m_trackpointCircuit.PointsNumber;
+
         #region Public
 
         public void LaunchPreparationStart()
@@ -77,6 +81,8 @@ namespace Racing
 
         private void OnLapCompleted(int lapAmount)
         {
+            EventOnLapCompleted?.Invoke(lapAmount);
+
             if (m_trackpointCircuit.Type == TrackType.Sprint)
             {
                 CompleteRace();

@@ -21,12 +21,13 @@ namespace Racing
         private int lapsCompleted = -1;
 
         private TrackPoint[] m_points;
+        public int PointsNumber => m_points.Length;
 
         private void Start()
         {
             BuildCircuit();
 
-            for (int i=0; i< m_points.Length;i++)
+            for (int i=0; i < m_points.Length;i++)
             {
                 m_points[i].EventOnTriggered += OnTrackPointTriggered;
             }
