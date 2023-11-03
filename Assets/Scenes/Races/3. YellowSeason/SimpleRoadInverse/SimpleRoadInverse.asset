@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SimpleRoadInverse
   m_EditorClassIdentifier: 
   m_sceneName: SimpleRoadInverse
-  m_icon: {fileID: 21300000, guid: 74d9a51345461a74ea958aa58dc5ff6e, type: 3}
+  m_icon: {fileID: 21300000, guid: b350f839f74073944a4524c4cc75ce2c, type: 3}
   m_title: Simple Road Inverse
   m_laps: 0

@@ -45,9 +45,33 @@ EditorBuildSettings:
     path: Assets/Scenes/Races/2. GreenSeason/ThreeAnglesInverse.unity
     guid: 1e7d3cb3ef08d1543a04a330aef6a158
   - enabled: 1
+    path: Assets/Scenes/Races/3. YellowSeason/HarderCircle.unity
+    guid: 0b7a701a9a7a5e44284a2c2cb2ee1e6b
+  - enabled: 1
+    path: Assets/Scenes/Races/3. YellowSeason/HarderCircleInverse.unity
+    guid: dc1fea3da6549a442a6375032702edab
+  - enabled: 1
     path: Assets/Scenes/Races/3. YellowSeason/SimpleRoad.unity
     guid: a08b2a1ae6e773045ac5898ba1961fa4
   - enabled: 1
     path: Assets/Scenes/Races/3. YellowSeason/SimpleRoadInverse.unity
-    guid: e5adeabbaed844149a9138ca1f2c83c0
+    guid: dc04bdfae807eb84d8c979fa54826580
+  - enabled: 1
+    path: Assets/Scenes/Races/3. YellowSeason/WindingRoad.unity
+    guid: a10ebdc8306338d419e56123d03f96d9
+  - enabled: 1
+    path: Assets/Scenes/Races/3. YellowSeason/WindingRoadInverse.unity
+    guid: f6ca32754294f2e4ebb1e6504936b081
+  - enabled: 1
+    path: Assets/Scenes/Races/4. RedSeason/TestRace_Harder.unity
+    guid: 961e49ed9adfabc428368b14a7bfe70a
+  - enabled: 1
+    path: Assets/Scenes/Races/4. RedSeason/TestRace_HarderInverse.unity
+    guid: cd20db99503eab6419818fd9a845a8e2
+  - enabled: 1
+    path: Assets/Scenes/Races/4. RedSeason/NotSimpleRoad.unity
+    guid: 02310f7f33b842045a5b5dcd137410c6
+  - enabled: 1
+    path: Assets/Scenes/Races/4. RedSeason/NotSimpleRoadInverse.unity
+    guid: 653bcb27e17149f42a2e0fd00999afbe
   m_configObjects: {}
