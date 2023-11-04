@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
 namespace Racing
@@ -10,6 +7,8 @@ namespace Racing
     public class UISelectableButton : UIButton
     {
         [SerializeField] private Image m_selectImage;
+        [SerializeField] private GameObject m_lockerObject;
+        [SerializeField] private Text m_lockMessage;
 
         public UnityEvent OnSelect;
         public UnityEvent OnUnselect;
@@ -28,6 +27,29 @@ namespace Racing
 
             m_selectImage.enabled = false;
             OnUnselect?.Invoke();
+        }
+
+        public virtual void SetLocker(int racesAmount)
+        {
+            if (!m_lockerObject) return;
+
+            m_lockerObject.SetActive(true);
+            m_lockMessage.text = $"Clear {racesAmount} Races";
+        }
+
+        public virtual void SetLocker(string message)
+        {
+            if (!m_lockerObject) return;
+
+            m_lockerObject.SetActive(true);
+            m_lockMessage.text = message;
+        }
+
+        public virtual void SetLockerOff()
+        {
+            if (!m_lockerObject) return;
+
+            m_lockerObject.SetActive(false);
         }
     }
 }

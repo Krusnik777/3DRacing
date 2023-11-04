@@ -3,10 +3,8 @@ using UnityEngine.Events;
 
 namespace Racing
 {
-    public class RaceResultTime : MonoBehaviour, IDependency<RaceStateTracker>, IDependency<RaceTimeTracker>
+    public class RaceResultTime : MonoBehaviour, IDependency<RaceStateTracker>, IDependency<RaceTimeTracker>, IDependency<GameCompletion>
     {
-        public const string SaveMark = "_player_best_time";
-
         [SerializeField] private float m_goldTime;
         public float GoldTime => m_goldTime;
 
@@ -17,6 +15,9 @@ namespace Racing
 
         private RaceTimeTracker m_raceTimeTracker;
         public void Construct(RaceTimeTracker raceTimeTracker) => m_raceTimeTracker = raceTimeTracker;
+
+        private GameCompletion m_gameCompletion;
+        public void Construct(GameCompletion gameCompletion) => m_gameCompletion = gameCompletion;
 
         private float playerRecordTime;
         public float PlayerRecordTime => playerRecordTime;
@@ -39,13 +40,10 @@ namespace Racing
 
         #region Private
 
-        private void Awake()
-        {
-            Load();
-        }
-
         private void Start()
         {
+            Load();
+
             m_raceStateTracker.EventOnCompleted += OnRaceCompleted;
         }
 
@@ -72,12 +70,16 @@ namespace Racing
 
         private void Load()
         {
-            playerRecordTime = PlayerPrefs.GetFloat(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + SaveMark, 0f);
+            m_gameCompletion.LoadResult(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, ref playerRecordTime);
+
+            //playerRecordTime = PlayerPrefs.GetFloat(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + SaveMark, 0f);
         }
 
         private void Save()
         {
-            PlayerPrefs.SetFloat(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + SaveMark, playerRecordTime);
+            m_gameCompletion.SaveResult(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, playerRecordTime);
+
+            //PlayerPrefs.SetFloat(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + SaveMark, playerRecordTime);
         }
 
         #endregion

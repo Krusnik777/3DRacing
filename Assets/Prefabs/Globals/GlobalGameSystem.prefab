@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5393931485846805125}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1701823221907576808
 MonoBehaviour:
@@ -77,7 +77,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5393931485846805125}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2875579898508973407
 MonoBehaviour:
@@ -91,6 +91,124 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101ca92461fa8d34990272088f5f12c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5793126824453832269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6438187641794597377}
+  - component: {fileID: 6387807760398603344}
+  m_Layer: 0
+  m_Name: GameCompletion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6438187641794597377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5793126824453832269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5393931485846805125}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6387807760398603344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5793126824453832269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 817fd988eab32ed488662821ba6de9d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_completionData:
+    RacesScore:
+    - RaceKey: TestRace_01
+      BestTime: 0
+      Passed: 0
+    - RaceKey: TestRace_02
+      BestTime: 0
+      Passed: 0
+    - RaceKey: SimpleCircle
+      BestTime: 0
+      Passed: 0
+    - RaceKey: SimpleCircle_Inverse
+      BestTime: 0
+      Passed: 0
+    - RaceKey: FirstSprint
+      BestTime: 0
+      Passed: 0
+    - RaceKey: FirstSprintLong
+      BestTime: 0
+      Passed: 0
+    - RaceKey: HarderRoad
+      BestTime: 0
+      Passed: 0
+    - RaceKey: HarderRoadInverse
+      BestTime: 0
+      Passed: 0
+    - RaceKey: ThreeAngles
+      BestTime: 0
+      Passed: 0
+    - RaceKey: ThreeAnglesInverse
+      BestTime: 0
+      Passed: 0
+    - RaceKey: WindingCircle
+      BestTime: 0
+      Passed: 0
+    - RaceKey: WindingCircleInverse
+      BestTime: 0
+      Passed: 0
+    - RaceKey: HarderCircle
+      BestTime: 0
+      Passed: 0
+    - RaceKey: HarderCircleInverse
+      BestTime: 0
+      Passed: 0
+    - RaceKey: SimpleRoad
+      BestTime: 0
+      Passed: 0
+    - RaceKey: SimpleRoadInverse
+      BestTime: 0
+      Passed: 0
+    - RaceKey: WindingRoad
+      BestTime: 0
+      Passed: 0
+    - RaceKey: WindingRoadInverse
+      BestTime: 0
+      Passed: 0
+    - RaceKey: NotSimpleRoad
+      BestTime: 0
+      Passed: 0
+    - RaceKey: NotSimpleRoadInverse
+      BestTime: 0
+      Passed: 0
+    - RaceKey: TestRace_Harder
+      BestTime: 0
+      Passed: 0
+    - RaceKey: TestRace_HarderInverse
+      BestTime: 0
+      Passed: 0
+    - RaceKey: ThreeAnglesHarder
+      BestTime: 0
+      Passed: 0
+    - RaceKey: ThreeAnglesHarderInverse
+      BestTime: 0
+      Passed: 0
+    PassedAmount: 0
 --- !u!1 &8057580463190800880
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,8 +237,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1701823221907576809}
   - {fileID: 8397048443350506285}
+  - {fileID: 6438187641794597377}
+  - {fileID: 1701823221907576809}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -137,3 +256,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pauser: {fileID: 2875579898508973407}
+  m_gameCompletion: {fileID: 6387807760398603344}
+  m_settingLoader: {fileID: 1701823221907576808}

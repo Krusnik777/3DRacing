@@ -25,6 +25,8 @@ namespace Racing
 
         public override void OnPointerClick(PointerEventData eventData)
         {
+            if (!m_interactible) return;
+
             base.OnPointerClick(eventData);
 
             if (m_raceInfo == null) return;

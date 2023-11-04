@@ -6,7 +6,7 @@ namespace Racing
     {
         [SerializeField] private Setting[] m_allSettings;
 
-        private void Awake()
+        public void LoadSettings()
         {
             for (int i = 0; i < m_allSettings.Length; i++)
             {

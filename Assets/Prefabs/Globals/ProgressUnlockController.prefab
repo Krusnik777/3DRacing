@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5539884076727154441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7357811935016978436}
+  - component: {fileID: 355710913732033657}
+  m_Layer: 0
+  m_Name: ProgressUnlockController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7357811935016978436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539884076727154441}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &355710913732033657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539884076727154441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af85176182d2a13458157b6c12205a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Seasons:
+  - SeasonButton: {fileID: 0}
+    PassedRacesToProgress: 0
+    Races:
+    - RaceButton: {fileID: 0}
+      UnlockCondition:
+        Type: 1
+        RacesAmount: 0
+        RaceKey: TestRace_01
+    - RaceButton: {fileID: 0}
+      UnlockCondition:
+        Type: 1
+        RacesAmount: 0
+        RaceKey: SimpleCircle
+    - RaceButton: {fileID: 0}
+      UnlockCondition:
+        Type: 1
+        RacesAmount: 0
+        RaceKey: FirstSprint
+  - SeasonButton: {fileID: 0}
+    PassedRacesToProgress: 3
+    Races:
+    - RaceButton: {fileID: 0}
+      UnlockCondition:
+        Type: 1
+        RacesAmount: 0
+        RaceKey: WindingCircle
+    - RaceButton: {fileID: 0}
+      UnlockCondition:
+        Type: 1
+        RacesAmount: 0
+        RaceKey: HarderRoad
+    - RaceButton: {fileID: 0}
+      UnlockCondition:
+        Type: 1
+        RacesAmount: 0
+        RaceKey: ThreeAngles
+  - SeasonButton: {fileID: 0}
+    PassedRacesToProgress: 6
+    Races:
+    - RaceButton: {fileID: 0}
+      UnlockCondition:
+        Type: 1
+        RacesAmount: 0
+        RaceKey: SimpleRoad
+    - RaceButton: {fileID: 0}
+      UnlockCondition:
+        Type: 1
+        RacesAmount: 0
+        RaceKey: HarderCircle
+    - RaceButton: {fileID: 0}
+      UnlockCondition:
+        Type: 1
+        RacesAmount: 0
+        RaceKey: WindingRoad
+  - SeasonButton: {fileID: 0}
+    PassedRacesToProgress: 9
+    Races:
+    - RaceButton: {fileID: 0}
+      UnlockCondition:
+        Type: 1
+        RacesAmount: 0
+        RaceKey: TestRace_Harder
+    - RaceButton: {fileID: 0}
+      UnlockCondition:
+        Type: 1
+        RacesAmount: 0
+        RaceKey: NotSimpleRoad
+    - RaceButton: {fileID: 0}
+      UnlockCondition:
+        Type: 1
+        RacesAmount: 0
+        RaceKey: ThreeAnglesHarder

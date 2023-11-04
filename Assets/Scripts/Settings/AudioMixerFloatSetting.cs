@@ -52,7 +52,9 @@ namespace Racing
 
         public override void Load()
         {
-            currentValue = PlayerPrefs.GetFloat(m_title, 0);
+            SettingsSaver.Load(m_title, ref currentValue);
+
+            //currentValue = PlayerPrefs.GetFloat(m_title, 0);
         }
 
         #endregion
@@ -67,7 +69,9 @@ namespace Racing
 
         private void Save()
         {
-            PlayerPrefs.SetFloat(m_title, currentValue);
+            SettingsSaver.Save(m_title, currentValue);
+
+            //PlayerPrefs.SetFloat(m_title, currentValue);
         }
 
         #endregion

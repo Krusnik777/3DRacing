@@ -41,14 +41,19 @@ namespace Racing
 
             Save();
         }
+
         public override void Load()
         {
-            currentLevelIndex = PlayerPrefs.GetInt(m_title, QualitySettings.names.Length - 1);
+            SettingsSaver.Load(m_title, ref currentLevelIndex);
+            
+            //currentLevelIndex = PlayerPrefs.GetInt(m_title, QualitySettings.names.Length - 1);
         }
 
         private void Save()
         {
-            PlayerPrefs.SetInt(m_title, currentLevelIndex);
+            SettingsSaver.Save(m_title, currentLevelIndex);
+
+            //PlayerPrefs.SetInt(m_title, currentLevelIndex);
         }
     }
 }

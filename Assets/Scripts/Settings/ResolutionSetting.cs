@@ -54,12 +54,16 @@ namespace Racing
 
         public override void Load()
         {
-            currentResolutionIndex = PlayerPrefs.GetInt(m_title, m_availableResolutions.Length - 1);
+            SettingsSaver.Load(m_title, ref currentResolutionIndex);
+
+            //currentResolutionIndex = PlayerPrefs.GetInt(m_title, m_availableResolutions.Length - 1);
         }
 
         private void Save()
         {
-            PlayerPrefs.SetInt(m_title, currentResolutionIndex);
+            SettingsSaver.Save(m_title, currentResolutionIndex);
+
+            //PlayerPrefs.SetInt(m_title, currentResolutionIndex);
         }
     }
 }

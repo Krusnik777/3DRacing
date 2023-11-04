@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Racing
@@ -7,8 +6,8 @@ namespace Racing
     {
         [SerializeField] private Transform m_buttonsContainer;
 
-        public bool Interacrable = true;
-        public void SetInteractable(bool interactible) => Interacrable = interactible;
+        public bool Interactable = true;
+        public void SetInteractable(bool interactible) => Interactable = interactible;
 
         private UISelectableButton[] buttons;
 
@@ -41,7 +40,7 @@ namespace Racing
                 buttons[i].EventOnPointerEnter += OnPointerEnter;
             }
 
-            if (!Interacrable) return;
+            if (!Interactable) return;
 
             buttons[selectButtonIndex].SetFocus();
         }
@@ -61,7 +60,7 @@ namespace Racing
 
         private void SelectButton(UIButton button)
         {
-            if (!Interacrable) return;
+            if (!Interactable) return;
 
             buttons[selectButtonIndex].UnsetFocus();
 

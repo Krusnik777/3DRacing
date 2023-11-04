@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
@@ -53,6 +52,11 @@ namespace Racing
 
             EventOnPointerClick?.Invoke(this);
             OnClick?.Invoke();
+        }
+
+        public virtual void SetInteractible(bool state)
+        {
+            m_interactible = state;
         }
     }
 }
