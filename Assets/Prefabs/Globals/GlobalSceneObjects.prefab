@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5755655114425531625}
-  m_RootOrder: 2
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5755655112890635773
 MonoBehaviour:
@@ -116,7 +116,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5755655114425531625}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5755655113121642062
 MonoBehaviour:
@@ -159,7 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5755655114425531625}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5755655113370550928
 MonoBehaviour:
@@ -223,6 +223,7 @@ MonoBehaviour:
   m_trackpointCircuit: {fileID: 0}
   m_car: {fileID: 0}
   m_carCameraController: {fileID: 0}
+  m_raceKeyboardStarter: {fileID: 5755655112890635773}
 --- !u!1 &5755655113571984326
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +299,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5755655114425531625}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5755655114284845366
 MonoBehaviour:
@@ -341,7 +342,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5755655114425531625}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5755655114306522264
 MonoBehaviour:
@@ -385,7 +386,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5755655114425531625}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5755655114337444188
 MonoBehaviour:
@@ -429,12 +430,12 @@ Transform:
   m_Children:
   - {fileID: 5755655113496172633}
   - {fileID: 5755655113571984325}
-  - {fileID: 5755655112890635774}
   - {fileID: 5755655113121642063}
   - {fileID: 5755655114284845367}
   - {fileID: 5755655114337444189}
   - {fileID: 5755655113370550929}
   - {fileID: 5755655114306522265}
+  - {fileID: 5755655112890635774}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

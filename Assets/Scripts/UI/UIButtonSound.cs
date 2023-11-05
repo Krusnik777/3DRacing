@@ -18,10 +18,13 @@ namespace Racing
 
             uIButtons = GetComponentsInChildren<UIButton>(true);
 
-            for (int i =0; i < uIButtons.Length; i++)
+            for (int i = 0; i < uIButtons.Length; i++)
             {
-                uIButtons[i].EventOnPointerEnter += OnPointerEnter;
-                uIButtons[i].EventOnPointerClick += OnPointerClick;
+                //uIButtons[i].EventOnPointerEnter += OnPointerEnter;
+                if (uIButtons[i] is UISelectableButton) (uIButtons[i] as UISelectableButton).OnSelect.AddListener(OnSelectButton);
+
+                //uIButtons[i].EventOnPointerClick += OnPointerClick;
+                uIButtons[i].OnClick.AddListener(OnPointerClick);
             }
         }
 
@@ -29,8 +32,11 @@ namespace Racing
         {
             for (int i = 0; i < uIButtons.Length; i++)
             {
-                uIButtons[i].EventOnPointerEnter -= OnPointerEnter;
-                uIButtons[i].EventOnPointerClick -= OnPointerClick;
+                //uIButtons[i].EventOnPointerEnter -= OnPointerEnter;
+                if (uIButtons[i] is UISelectableButton) (uIButtons[i] as UISelectableButton).OnSelect.RemoveListener(OnSelectButton);
+
+                //uIButtons[i].EventOnPointerClick -= OnPointerClick;
+                uIButtons[i].OnClick.RemoveListener(OnPointerClick);
             }
         }
 
@@ -39,7 +45,17 @@ namespace Racing
             m_audioSource.PlayOneShot(m_hoverSound);
         }
 
+        private void OnSelectButton()
+        {
+            m_audioSource.PlayOneShot(m_hoverSound);
+        }
+
         private void OnPointerClick(UIButton button)
+        {
+            m_audioSource.PlayOneShot(m_clickSound);
+        }
+
+        private void OnPointerClick()
         {
             m_audioSource.PlayOneShot(m_clickSound);
         }

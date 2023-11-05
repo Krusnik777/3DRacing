@@ -45,12 +45,12 @@ namespace Racing
             {
                 if (season.PassedRacesToProgress > m_gameCompletion.PassedRacesAmount)
                 {
-                    season.SeasonButton.SetInteractible(false);
+                    season.SeasonButton.SetInteractable(false);
                     season.SeasonButton.SetLocker(season.PassedRacesToProgress);
                 }
                 else
                 {
-                    season.SeasonButton.SetInteractible(true);
+                    season.SeasonButton.SetInteractable(true);
                     season.SeasonButton.SetLockerOff();
                 }
 
@@ -60,12 +60,12 @@ namespace Racing
                     {
                         if (race.UnlockCondition.RacesAmount > m_gameCompletion.PassedRacesAmount)
                         {
-                            race.RaceButton.SetInteractible(false);
+                            race.RaceButton.SetInteractable(false);
                             race.RaceButton.SetLocker(race.UnlockCondition.RacesAmount);
                         }
                         else
                         {
-                            race.RaceButton.SetInteractible(true);
+                            race.RaceButton.SetInteractable(true);
                             race.RaceButton.SetLockerOff();
                         }
                     }
@@ -74,12 +74,12 @@ namespace Racing
                     {
                         if (!m_gameCompletion.TryGetRaceStatus(race.UnlockCondition.RaceKey))
                         {
-                            race.RaceButton.SetInteractible(false);
+                            race.RaceButton.SetInteractable(false);
                             race.RaceButton.SetLocker("Clear Prev. Race");
                         }
                         else
                         {
-                            race.RaceButton.SetInteractible(true);
+                            race.RaceButton.SetInteractable(true);
                             race.RaceButton.SetLockerOff();
                         }
                     }

@@ -11,6 +11,7 @@ namespace Racing
         [SerializeField] private TrackpointCircuit m_trackpointCircuit;
         [SerializeField] private Car m_car;
         [SerializeField] private CarCameraController m_carCameraController;
+        [SerializeField] private RaceKeyboardStarter m_raceKeyboardStarter;
 
         protected override void BindAll(MonoBehaviour monoBehaviourInScene)
         {
@@ -21,6 +22,7 @@ namespace Racing
             Bind<TrackpointCircuit>(m_trackpointCircuit, monoBehaviourInScene);
             Bind<Car>(m_car, monoBehaviourInScene);
             Bind<CarCameraController>(m_carCameraController, monoBehaviourInScene);
+            Bind<RaceKeyboardStarter>(m_raceKeyboardStarter, monoBehaviourInScene);
         }
 
         private void Awake()

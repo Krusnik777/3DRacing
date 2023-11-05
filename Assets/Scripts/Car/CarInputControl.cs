@@ -53,7 +53,6 @@ namespace Racing
 
             UpdateAutoBrake();
 
-            //DEBUG
             if (Input.GetButtonDown("ShiftGearUp"))
                 m_car.UpGear();
             if (Input.GetButtonDown("ShiftGearDown"))

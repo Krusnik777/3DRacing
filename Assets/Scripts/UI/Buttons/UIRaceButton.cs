@@ -25,9 +25,20 @@ namespace Racing
 
         public override void OnPointerClick(PointerEventData eventData)
         {
-            if (!m_interactible) return;
+            if (!m_interactable) return;
 
             base.OnPointerClick(eventData);
+
+            if (m_raceInfo == null) return;
+
+            SceneManager.LoadScene(m_raceInfo.SceneName);
+        }
+
+        public override void OnButtonClick()
+        {
+            if (!m_interactable) return;
+
+            base.OnButtonClick();
 
             if (m_raceInfo == null) return;
 

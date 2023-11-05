@@ -15,11 +15,20 @@ namespace Racing
         private RaceResultTime m_raceResultTime;
         public void Construct(RaceResultTime raceResultTime) => m_raceResultTime = raceResultTime;
 
+        private UISelectableButtonContainer buttonContainer;
+
         private void Start()
         {
+            buttonContainer = GetComponent<UISelectableButtonContainer>();
+
             m_raceResultTime.EventOnUpdatedResults += OnUpdatedResults;
 
             m_resultsPanel.SetActive(false);
+        }
+
+        private void Update()
+        {
+            if (m_resultsPanel.activeInHierarchy) ControlPauseMenu();
         }
 
         private void OnDestroy()
@@ -58,6 +67,24 @@ namespace Racing
             m_recordTimeObject.SetActive(!newRecordWasSet);
 
             if (!newRecordWasSet) m_recordTimeText.text = StringTime.SecondToTimeString(m_raceResultTime.PlayerRecordTime);
+        }
+
+        private void ControlPauseMenu()
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                buttonContainer.SelectNext();
+            }
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                buttonContainer.SelectPrevious();
+            }
+
+            if (Input.GetButton("Submit"))
+            {
+                buttonContainer.ActivateButton();
+            }
         }
     }
 }

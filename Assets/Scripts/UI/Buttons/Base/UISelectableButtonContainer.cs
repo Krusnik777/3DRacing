@@ -7,22 +7,35 @@ namespace Racing
         [SerializeField] private Transform m_buttonsContainer;
 
         public bool Interactable = true;
-        public void SetInteractable(bool interactible) => Interactable = interactible;
+        public void SetInteractable(bool interactable) => Interactable = interactable;
 
         private UISelectableButton[] buttons;
 
         private int selectButtonIndex = 0;
 
+        public UISelectableButton SelectedButton => buttons[selectButtonIndex];
+
         #region Public
 
         public void SelectNext()
         {
-
+            var newButtonIndex = selectButtonIndex;
+            newButtonIndex++;
+            if (newButtonIndex >= buttons.Length) newButtonIndex = 0;
+            SelectButton(buttons[newButtonIndex]);
         }
 
         public void SelectPrevious()
         {
+            var newButtonIndex = selectButtonIndex;
+            newButtonIndex--;
+            if (newButtonIndex < 0) newButtonIndex = buttons.Length - 1;
+            SelectButton(buttons[newButtonIndex]);
+        }
 
+        public void ActivateButton()
+        {
+            buttons[selectButtonIndex].OnButtonClick();
         }
 
         #endregion

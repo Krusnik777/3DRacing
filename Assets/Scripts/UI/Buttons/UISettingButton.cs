@@ -18,12 +18,16 @@ namespace Racing
             m_setting?.SetNextValue();
             m_setting?.Apply();
             UpdateInfo();
+
+            OnClick?.Invoke();
         }
         public void SetPreviousValueSetting()
         {
             m_setting?.SetPreviousValue();
             m_setting?.Apply();
             UpdateInfo();
+
+            OnClick?.Invoke();
         }
 
         public void ApplyProperty(ScriptableObject property)

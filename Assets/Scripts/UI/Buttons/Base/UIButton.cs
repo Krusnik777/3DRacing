@@ -6,7 +6,7 @@ namespace Racing
 {
     public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
-        [SerializeField] protected bool m_interactible;
+        [SerializeField] protected bool m_interactable;
 
         public UnityEvent OnClick;
 
@@ -19,28 +19,28 @@ namespace Racing
 
         public virtual void SetFocus()
         {
-            if (!m_interactible) return;
+            if (!m_interactable) return;
 
             inFocus = true;
         }
 
         public virtual void UnsetFocus()
         {
-            if (!m_interactible) return;
+            if (!m_interactable) return;
 
             inFocus = false;
         }
 
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
-            if (!m_interactible) return;
+            if (!m_interactable) return;
 
             EventOnPointerEnter?.Invoke(this);
         }
 
         public virtual void OnPointerExit(PointerEventData eventData)
         {
-            if (!m_interactible) return;
+            if (!m_interactable) return;
 
             EventOnPointerExit?.Invoke(this);
 
@@ -48,15 +48,22 @@ namespace Racing
 
         public virtual void OnPointerClick(PointerEventData eventData)
         {
-            if (!m_interactible) return;
+            if (!m_interactable) return;
 
             EventOnPointerClick?.Invoke(this);
             OnClick?.Invoke();
         }
 
-        public virtual void SetInteractible(bool state)
+        public virtual void OnButtonClick()
         {
-            m_interactible = state;
+            if (!m_interactable) return;
+
+            OnClick?.Invoke();
+        }
+
+        public virtual void SetInteractable(bool state)
+        {
+            m_interactable = state;
         }
     }
 }
