@@ -28,7 +28,7 @@ namespace Racing
 
         private void Update()
         {
-            if (m_resultsPanel.activeInHierarchy) ControlPauseMenu();
+            if (m_resultsPanel.activeInHierarchy) ControlResultsPanelMenu();
         }
 
         private void OnDestroy()
@@ -69,22 +69,13 @@ namespace Racing
             if (!newRecordWasSet) m_recordTimeText.text = StringTime.SecondToTimeString(m_raceResultTime.PlayerRecordTime);
         }
 
-        private void ControlPauseMenu()
+        private void ControlResultsPanelMenu()
         {
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                buttonContainer.SelectNext();
-            }
+            if (!m_resultsPanel.activeInHierarchy) return;
 
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                buttonContainer.SelectPrevious();
-            }
-
-            if (Input.GetButton("Submit"))
-            {
-                buttonContainer.ActivateButton();
-            }
+            if (MenuControlButtons.IsDown) buttonContainer.SelectNext();
+            if (MenuControlButtons.IsUp) buttonContainer.SelectPrevious();
+            if (Input.GetButtonDown("Submit")) buttonContainer.ActivateButton();
         }
     }
 }

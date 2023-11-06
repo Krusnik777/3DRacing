@@ -17,6 +17,6 @@ MonoBehaviour:
   m_nameParameter: SFX Volume
   m_minRealValue: -80
   m_maxRealValue: 0
-  m_virtualStep: 10
+  m_virtualStep: 20
   m_minVirtualValue: 0
   m_maxVirtualValue: 100

@@ -32,9 +32,12 @@ namespace Racing
 
         private void Update()
         {
+            if (m_raceStateTracker.State == RaceState.Preparation) return;
+
             if (m_raceStateTracker.State == RaceState.Passed) enabled = false;
 
-            if (Input.GetKeyDown(KeyCode.Escape)) m_pauser.ChangePauseState();
+            if (Input.GetButtonDown("Pause")) m_pauser.ChangePauseState();
+
             ControlPauseMenu();
         }
 
@@ -52,20 +55,9 @@ namespace Racing
         {
             if (!m_panel.activeInHierarchy) return;
 
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                buttonContainer.SelectNext();
-            }
-
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                buttonContainer.SelectPrevious();
-            }
-
-            if (Input.GetButton("Submit"))
-            {
-                buttonContainer.ActivateButton();
-            }
+            if (MenuControlButtons.IsDown) buttonContainer.SelectNext();
+            if (MenuControlButtons.IsUp) buttonContainer.SelectPrevious();
+            if (Input.GetButtonDown("Submit")) buttonContainer.ActivateButton();
         }
 
         #endregion

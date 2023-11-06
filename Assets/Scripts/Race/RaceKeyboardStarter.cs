@@ -9,7 +9,7 @@ namespace Racing
 
         private void Update()
         {
-            if (Input.GetButton("Submit"))
+            if (Input.GetButtonDown("Submit"))
             {
                 m_raceStateTracker.LaunchPreparationStart();
                 enabled = false;
