@@ -17,20 +17,112 @@ namespace Racing
         [SerializeField] private UISelectableButtonContainer m_settingsButtonContainer;
         [Header("RacePanels")]
         [SerializeField] private RaceMenu[] m_RacesMenus;
+        [Header("ConfirmPanels")]
+        [SerializeField] private UIConfirmPanels m_confirmPanels;
+        [Header("ExitButton")]
+        [SerializeField] private UIButton m_exitButton;
 
         private int activeRacesMenuIndex = -1;
 
-        public void ExitGame()
+        private UISelectableButton[] seasonButtons;
+
+        private void Start()
         {
-            Application.Quit();
+            seasonButtons = m_seasonsButtonContainer.ButtonsContainer.GetComponentsInChildren<UISelectableButton>();
+
+            foreach (var seasonButton in seasonButtons)
+            {
+                seasonButton.OnClick.AddListener(GetActiveRacesMenuIndex);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            foreach (var seasonButton in seasonButtons)
+            {
+                seasonButton.OnClick.RemoveListener(GetActiveRacesMenuIndex);
+            }
         }
 
         private void Update()
         {
-            ControlRacesMenu();
-            ControlMenuItemsBar();
-            ControlSeasonsMenu();
-            ControlSettingsMenu();
+            if (m_confirmPanels.IsConfirmPanelUp)
+            {
+                ControlConfirmPanels();
+            }
+            else
+            {
+                ControlRacesMenu();
+                ControlMenuItemsBar();
+                ControlSeasonsMenu();
+                ControlSettingsMenu();
+
+                if (Input.GetButtonDown("Exit")) m_exitButton.OnButtonClick();
+            }
+        }
+
+        private void ControlConfirmPanels()
+        {
+            var confirmContainer = m_confirmPanels.GetActiveConfirmPanelContainer();
+
+            if (MenuControlButtons.IsLeft) confirmContainer.SelectPrevious();
+            if (MenuControlButtons.IsRight) confirmContainer.SelectNext();
+
+            if (Input.GetButtonDown("Submit"))
+            {
+                confirmContainer.SelectedButton.OnButtonClick();
+            }
+
+            if (Input.GetButtonDown("Exit") || Input.GetButtonDown("Cancel"))
+            {
+                m_confirmPanels.CancelButton.OnButtonClick();
+            }
+        }
+
+        private void GetActiveRacesMenuIndex()
+        {
+            for (int i = 0; i < m_RacesMenus.Length; i++)
+            {
+                if (m_RacesMenus[i].RacesButtonContrainer.gameObject.activeInHierarchy)
+                {
+                    activeRacesMenuIndex = i;
+                    return;
+                }
+            }
+
+            activeRacesMenuIndex = -1;
+        }
+
+        private void ControlRacesMenu()
+        {
+            if (m_seasonsButtonContainer.gameObject.activeInHierarchy || activeRacesMenuIndex == -1) return;
+
+            if (MenuControlButtons.IsUp) m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.SelectUp();
+            if (MenuControlButtons.IsDown) m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.SelectDown();
+            if (MenuControlButtons.IsLeft) m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.SelectLeft();
+            if (MenuControlButtons.IsRight) m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.SelectRight();
+
+            /*
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.SelectNext();
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.SelectPrevious();
+            }*/
+
+            if (Input.GetButtonDown("Submit"))
+            {
+                m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.ActivateButton();
+            }
+
+            if (Input.GetButtonDown("Cancel"))
+            {
+                m_RacesMenus[activeRacesMenuIndex].CloseButton.OnButtonClick();
+                activeRacesMenuIndex = -1;
+            }
         }
 
         private void ControlMenuItemsBar()
@@ -69,7 +161,6 @@ namespace Racing
             if (Input.GetButtonDown("Submit"))
             {
                 m_seasonsButtonContainer.ActivateButton();
-                activeRacesMenuIndex = GetActiveRacesMenuIndex();
             }
         }
 
@@ -79,51 +170,13 @@ namespace Racing
 
             if (MenuControlButtons.IsUp) m_settingsButtonContainer.SelectPrevious();
             if (MenuControlButtons.IsDown) m_settingsButtonContainer.SelectNext();
-            if (MenuControlButtons.IsLeft) (m_settingsButtonContainer.SelectedButton as UISettingButton).SetPreviousValueSetting();
-            if (MenuControlButtons.IsRight) (m_settingsButtonContainer.SelectedButton as UISettingButton).SetNextValueSetting();
-        }
-
-        private void ControlRacesMenu()
-        {
-            if (m_seasonsButtonContainer.gameObject.activeInHierarchy || activeRacesMenuIndex == -1) return;
-
-            if (MenuControlButtons.IsUp) m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.SelectUp();
-            if (MenuControlButtons.IsDown) m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.SelectDown();
-            if (MenuControlButtons.IsLeft) m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.SelectLeft();
-            if (MenuControlButtons.IsRight) m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.SelectRight();
-
-            /*
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.SelectNext();
-            }
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.SelectPrevious();
-            }*/
+            if (MenuControlButtons.IsLeft && m_settingsButtonContainer.SelectedButton is UISettingButton) (m_settingsButtonContainer.SelectedButton as UISettingButton).SetPreviousValueSetting();
+            if (MenuControlButtons.IsRight && m_settingsButtonContainer.SelectedButton is UISettingButton) (m_settingsButtonContainer.SelectedButton as UISettingButton).SetNextValueSetting();
 
             if (Input.GetButtonDown("Submit"))
             {
-                m_RacesMenus[activeRacesMenuIndex].RacesButtonContrainer.ActivateButton();
-            }
-
-            if (Input.GetButtonDown("Cancel"))
-            {
-                m_RacesMenus[activeRacesMenuIndex].CloseButton.OnButtonClick();
-                activeRacesMenuIndex = -1;
-            }
-        }
-
-        private int GetActiveRacesMenuIndex()
-        {
-            for (int i = 0; i < m_RacesMenus.Length; i++)
-            {
-                if (m_RacesMenus[i].RacesButtonContrainer.gameObject.activeInHierarchy)
-                    return i;
-            }
-
-            return -1;
+                if (!(m_settingsButtonContainer.SelectedButton is UISettingButton)) m_settingsButtonContainer.SelectedButton.OnButtonClick();
+            }  
         }
     }
 }

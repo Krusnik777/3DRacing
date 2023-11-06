@@ -37,6 +37,8 @@ namespace Racing
 
     public static class FileHandler
     {
+        public static event Action<string> EventOnReset;
+
         public static string Path(string filename)
         {
             return $"{Application.persistentDataPath}/{filename}";
@@ -46,6 +48,8 @@ namespace Racing
         {
             var path = Path(filename);
             if (File.Exists(path)) File.Delete(path);
+
+            EventOnReset?.Invoke(filename);
         }
 
         public static bool TryGetFile(string filename)

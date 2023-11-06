@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_buttonsContainer: {fileID: 3490038905262120047}
-  Interacrable: 1
+  Interactable: 1
 --- !u!114 &6319087599730092623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2590,7 +2590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_buttonsContainer: {fileID: 6531543902656631049}
-  Interacrable: 1
+  Interactable: 1
 --- !u!114 &2907728151205319388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2658,7 +2658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3337404523485638158, guid: 6de533a3d1f7e694bbd4656ca30f67d3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 600
+      value: 980
       objectReference: {fileID: 0}
     - target: {fileID: 3337404523485638158, guid: 6de533a3d1f7e694bbd4656ca30f67d3, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2718,7 +2718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3337404523715905213, guid: 6de533a3d1f7e694bbd4656ca30f67d3, type: 3}
       propertyPath: m_Text
-      value: Press ENTER to Start Race
+      value: Press Enter/Gamepad Confirm Button to Start Race
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6de533a3d1f7e694bbd4656ca30f67d3, type: 3}

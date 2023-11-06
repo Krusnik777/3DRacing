@@ -11,6 +11,11 @@ namespace Racing
         [SerializeField] private Image m_icon;
         [SerializeField] private Text m_title;
         [SerializeField] private Text m_laps;
+        [Header("ClearedMark")]
+        [SerializeField] private GameObject m_clearedMarkObject;
+        [SerializeField] private Text m_bestTimeText;
+
+        public string RaceKey => m_raceInfo.SceneName;
 
         public void ApplyProperty(ScriptableObject property)
         {
@@ -43,6 +48,21 @@ namespace Racing
             if (m_raceInfo == null) return;
 
             SceneManager.LoadScene(m_raceInfo.SceneName);
+        }
+
+        public virtual void SetMark(float time)
+        {
+            if (!m_clearedMarkObject) return;
+
+            m_clearedMarkObject.SetActive(true);
+            m_bestTimeText.text = StringTime.SecondToTimeString(time);
+        }
+
+        public virtual void SetMarkOff()
+        {
+            if (!m_clearedMarkObject) return;
+
+            m_clearedMarkObject.SetActive(false);
         }
 
         private void Start()

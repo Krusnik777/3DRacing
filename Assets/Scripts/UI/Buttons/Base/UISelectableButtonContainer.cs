@@ -17,6 +17,8 @@ namespace Racing
 
         public UISelectableButton SelectedButton => buttons[selectButtonIndex];
 
+        public Transform ButtonsContainer => m_buttonsContainer;
+
         #region Public
 
         public void SelectNext()

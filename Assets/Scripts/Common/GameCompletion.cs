@@ -28,11 +28,11 @@ namespace Racing
 
         #region Public
 
-        public void LoadResult(string RaceKey, ref float time)
+        public void LoadResult(string raceKey, ref float time)
         {
             foreach (var race in m_completionData.RacesScore)
             {
-                if (race.RaceKey == RaceKey)
+                if (race.RaceKey == raceKey)
                 {
                     time = race.BestTime;
                     break;
@@ -40,11 +40,11 @@ namespace Racing
             }
         }
 
-        public void SaveResult(string RaceKey, float time)
+        public void SaveResult(string raceKey, float time)
         {
             foreach (var race in m_completionData.RacesScore)
             {
-                if (race.RaceKey == RaceKey)
+                if (race.RaceKey == raceKey)
                 {
                     race.BestTime = time;
                     if (race.Passed == false)
@@ -58,16 +58,30 @@ namespace Racing
             }
         }
 
-        public bool TryGetRaceStatus(string RaceKey)
+        public bool TryGetRaceStatus(string raceKey)
         {
             foreach (var race in m_completionData.RacesScore)
             {
-                if (race.RaceKey == RaceKey)
+                if (race.RaceKey == raceKey)
                 {
                     return race.Passed;
                 }
             }
 
+            return false;
+        }
+
+        public bool TryGetRaceStatus(string raceKey, out float bestTime)
+        {
+            foreach (var race in m_completionData.RacesScore)
+            {
+                if (race.RaceKey == raceKey)
+                {
+                    bestTime = race.BestTime;
+                    return race.Passed;
+                }
+            }
+            bestTime = 0;
             return false;
         }
 
@@ -78,6 +92,26 @@ namespace Racing
         private void Awake()
         {
             Saver<CompletionData>.TryLoad(Filename, ref m_completionData);
+
+            FileHandler.EventOnReset += OnReset;
+        }
+
+        private void OnDestroy()
+        {
+            FileHandler.EventOnReset -= OnReset;
+        }
+
+        private void OnReset(string filename)
+        {
+            if (filename == Filename)
+            {
+                foreach (var race in m_completionData.RacesScore)
+                {
+                    race.BestTime = 0;
+                    race.Passed = false;
+                }
+                m_completionData.PassedAmount = 0;
+            }
         }
 
         private void UpdatePassedAmount()
