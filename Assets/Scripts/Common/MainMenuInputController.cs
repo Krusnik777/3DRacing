@@ -15,6 +15,7 @@ namespace Racing
         [Header("MainPanels")]
         [SerializeField] private UISelectableButtonContainer m_seasonsButtonContainer;
         [SerializeField] private UISelectableButtonContainer m_settingsButtonContainer;
+        [SerializeField] private UICreditsPanel m_creditsPanel;
         [Header("RacePanels")]
         [SerializeField] private RaceMenu[] m_RacesMenus;
         [Header("ConfirmPanels")]
@@ -56,6 +57,7 @@ namespace Racing
                 ControlMenuItemsBar();
                 ControlSeasonsMenu();
                 ControlSettingsMenu();
+                ControlCreditsPanel();
 
                 if (Input.GetButtonDown("Exit")) m_exitButton.OnButtonClick();
             }
@@ -177,6 +179,16 @@ namespace Racing
             {
                 if (!(m_settingsButtonContainer.SelectedButton is UISettingButton)) m_settingsButtonContainer.SelectedButton.OnButtonClick();
             }  
+        }
+
+        private void ControlCreditsPanel()
+        {
+            if (m_creditsPanel.isActiveAndEnabled)
+            {
+                var verticalAxis = Input.GetAxis("MenuVertical");
+
+                if (verticalAxis != 0) m_creditsPanel.ControlCreditsScrollBar(Input.GetAxis("MenuVertical"));
+            }
         }
     }
 }
